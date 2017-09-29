@@ -3,6 +3,10 @@ defmodule Rsvp.EventQueries do
 
   alias Rsvp.{Repo, Events} # alias for Repo and Events
 
+  def any do
+    Repo.one(from e in Events, select: count(e.id)) != 0
+  end
+
   def get_all do
     # Repo - это модуль, отвечающий за коннект к бд.
     # all - метод, возвращающий все, что вернет query
@@ -20,6 +24,10 @@ defmodule Rsvp.EventQueries do
   def get_by_id(id) do
     # Rsvp.Repo.get!(Rsvp.Events, 10) get! - упадет если не будет звписи
     Repo.get(Events, id)
+  end
+
+  def create(event) do
+    Repo.insert!(event)
   end
 end
 

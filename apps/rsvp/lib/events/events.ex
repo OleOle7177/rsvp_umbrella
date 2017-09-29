@@ -1,4 +1,8 @@
 defmodule Rsvp.Events do
+
+  # change2 = Rsvp.Events.changeset(%Rsvp.Events{}, %{title: "Test", date: "2018-01-01 00:00:00", location: "Loc1"})
+  # Rsvp.Repo.insert(change2)
+  # Rsvp.EventQueries.create(Rsvp.Events.changeset(%Rsvp.Events{}, %{title: "Test"}))
   use Ecto.Schema
 
   import Ecto.Changeset
@@ -19,6 +23,17 @@ defmodule Rsvp.Events do
     event
       |> cast(params, @required_fields ++ @optional_fields)
       |> validate_required(@required_fields)
+      |> validate_change(:date, &must_be_future/2)
+      |> unique_constraint(:title)
   end
 
+  defp must_be_future(_, value) do
+    Ecto.DateTime.compare(to_ecto_datetime(value), Ecto.DateTime.utc)
+      |> get_error
+  end
+
+  defp get_error(comparison) when comparison == :lt, do: [date: "Cannot be in the past"]
+  defp get_error(_), do: []
+
+  defp to_ecto_datetime(value), do: value |> NaiveDateTime.to_erl |> Ecto.DateTime.from_erl
 end

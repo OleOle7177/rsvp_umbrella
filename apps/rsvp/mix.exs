@@ -11,7 +11,8 @@ defmodule Rsvp.Mixfile do
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     aliases: aliases()]
   end
 
   # Configuration for the OTP application
@@ -39,5 +40,11 @@ defmodule Rsvp.Mixfile do
   defp deps do
     [{:ecto, "~> 2.2"},
      {:postgrex, "~> 0.13.3"}]
+  end
+
+  def aliases do
+    [
+      "init": ["ecto.create", "ecto.migrate", "run priv/repo/seed.exs"]
+    ]
   end
 end
