@@ -25,4 +25,8 @@ defmodule RsvpWebWeb.Router do
   # scope "/api", RsvpWebWeb do
   #   pipe_through :api
   # end
+
+  # to check route helpers:
+  # RsvpWebWeb.Router.Helpers.event_path(RsvpWebWeb.Endpoint, :list)
+  # RsvpWebWeb.Router.Helpers.event_path(RsvpWebWeb.Endpoint, :show, 1)
 end

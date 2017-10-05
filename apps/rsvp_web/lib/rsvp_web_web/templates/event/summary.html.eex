@@ -1,0 +1,3 @@
+<a href="<%= event_path(@conn, :show, @event.id) %>">
+  <%= @event.title %>  <%= format_date(@event.date) %><br/>
+</a>
