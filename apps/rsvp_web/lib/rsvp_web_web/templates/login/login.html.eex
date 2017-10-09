@@ -1,0 +1,5 @@
+<%# as: :login - с формы отправится структура с ключом login %>
+<%= form_for @conn, login_path(@conn, :login), [as: :login], fn f -> %>
+  <%= text_input f, :username %>
+  <%= submit "Login" %>
+<% end %>

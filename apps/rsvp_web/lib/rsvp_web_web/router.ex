@@ -18,7 +18,13 @@ defmodule RsvpWebWeb.Router do
 
     get "/", PageController, :index
     get "/events", EventController, :list
+    # Порядок важен - /new должно быть перед :id
+    get "/events/new", EventController, :create
+    post "/events/new", EventController, :add
     get "/events/:id", EventController, :show
+
+    get "/login", LoginController, :index
+    post "/login", LoginController, :login
   end
 
   # Other scopes may use custom stacks.
