@@ -1,0 +1,21 @@
+{
+  "name": "rsvp_web",
+  "homepage": "https://github.com/OleOle7177/rsvp_umbrella",
+  "authors": [
+    "“Oleg <ole_@bk.ru>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
