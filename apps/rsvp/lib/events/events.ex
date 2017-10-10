@@ -12,6 +12,7 @@ defmodule Rsvp.Events do
     field :location, :string
     field :date, :naive_datetime
     field :description, :string
+    field :quantity_available, :integer, default: 25
 
     timestamps()
   end

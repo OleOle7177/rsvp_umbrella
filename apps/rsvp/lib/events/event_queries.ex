@@ -29,6 +29,13 @@ defmodule Rsvp.EventQueries do
   def create(event) do
     Repo.insert(event)
   end
+
+  def decrease_quantity(id, quantity) do
+    event = get_by_id(id)
+    changes = Ecto.Changeset.change event, quantity_available:
+      event.quantity_available - String.to_integer(quantity)
+    Repo.update(changes)
+  end
 end
 
 # insert to db: Rsvp.Repo.insert %Rsvp.Events{title: "Codefest", location: "The Office", date: Ecto.DateTime.cast!("2016-11-25 12:00:00")}
